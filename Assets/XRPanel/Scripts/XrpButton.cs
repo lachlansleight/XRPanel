@@ -16,14 +16,33 @@ namespace XRP
 		public Renderer DebugRenderer;
 
 		private BoxCollider _boxCollider;
+		private Transform _fadePanel;
+		private Material _fadePanelMat;
+		private LineRenderer _line;
 
 		public override void Awake()
 		{
 			base.Awake();
 			_boxCollider = GetComponent<BoxCollider>();
+			_fadePanel = transform.Find("ActiveGeometry/FadePanel");
+			_fadePanelMat = _fadePanel.GetComponent<Renderer>().material;
+			_line = transform.Find("ActiveGeometry/Line").GetComponent<LineRenderer>();
 		}
 
 		public void Update()
+		{
+			ShowDebugColor();
+			if (ActivePointer != null) {
+				ShowDebugPointer();
+				CheckPointerPress();
+
+				if (CurrentState == State.Press) {
+					DoPointerPress();
+				}
+			}
+		}
+
+		private void ShowDebugColor()
 		{
 			switch (CurrentState) {
 				case State.Disabled:
@@ -44,7 +63,27 @@ namespace XRP
 				default:
 					Debug.LogError("Unexpected state unhandled");
 					break;
-			} 
+			}
+		}
+
+		private void ShowDebugPointer()
+		{
+			if (ActivePointer != null) {
+				Debug.DrawLine(transform.position, ActivePointer.transform.position, Color.red);
+			}
+		}
+
+		private void CheckPointerPress()
+		{
+			var pointerPos = ActivePointer.transform.position;
+			var localPos = transform.InverseTransformPoint(pointerPos);
+			
+			
+		}
+
+		private void DoPointerPress()
+		{
+			
 		}
 
 		public override void StartHover()

@@ -43,14 +43,16 @@ namespace XRP
 			CurrentState = State.Inactive;
 		}
 
-		public virtual void StartTouch()
+		public virtual void StartTouch(XrpPointer pointer)
 		{
 			CurrentState = State.Touch;
+			ActivePointer = pointer;
 		}
 
 		public virtual void StopTouch()
 		{
 			CurrentState = State.Hover;
+			ActivePointer = null;
 		}
 
 		public virtual void StartPress()
