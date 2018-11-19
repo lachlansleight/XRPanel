@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="14de7ec9-4bd9-4985-8d03-0d74d7377283" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.XRPanel/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.XRPanel/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.XRPanel/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.XRPanel/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.XRPanel/riderModule.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpControl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpControl.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPanel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPanel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPointer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPointer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-2142908867">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="7485" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="7485" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpButton.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1049">
+              <caret line="97" column="64" selection-start-line="97" selection-start-column="64" selection-end-line="97" selection-end-column="64" />
+              <folding>
+                <marker date="1542598325334" expanded="false" signature="6:143" ph="..." />
+                <marker date="1542598325334" expanded="true" signature="158:3644" ph="{...}" />
+                <marker date="1542598325334" expanded="true" signature="239:3641" ph="{...}" />
+                <marker date="1542598325334" expanded="true" signature="375:447" ph="{...}" />
+                <marker date="1542598325334" expanded="true" signature="471:1005" ph="{...}" />
+                <marker date="1542598325334" expanded="true" signature="501:1000" ph="{...}" />
+                <marker date="1542598325334" expanded="true" signature="1042:1147" ph="{...}" />
+                <marker date="1542598325334" expanded="true" signature="1184:1267" ph="{...}" />
+                <marker date="1542598325334" expanded="true" signature="1326:3638" ph="{...}" />
+                <marker date="1542598325334" expanded="true" signature="1437:1838" ph="/* Debug.DrawLine(transform.position, transform.position + new Vector3(displacement.x, 0f, 0f), Color.red); ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPanel.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="624">
+              <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
+              <folding>
+                <marker date="1542598203381" expanded="true" signature="33:1569" ph="{...}" />
+                <marker date="1542598203381" expanded="true" signature="74:1567" ph="{...}" />
+                <marker date="1542598203381" expanded="true" signature="376:660" ph="{...}" />
+                <marker date="1542598203381" expanded="true" signature="684:1564" ph="{...}" />
+                <marker date="1542598203381" expanded="true" signature="731:1021" ph="{...}" />
+                <marker date="1542598203381" expanded="true" signature="780:1016" ph="{...}" />
+                <marker date="1542598203381" expanded="true" signature="1072:1552" ph="{...}" />
+                <marker date="1542598203381" expanded="true" signature="1151:1265" ph="{...}" />
+                <marker date="1542598203381" expanded="true" signature="1377:1458" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpControl.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1072">
+              <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+              <folding>
+                <marker date="1542598197120" expanded="true" signature="6:44" ph="..." />
+                <marker date="1542598197120" expanded="true" signature="59:1065" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="140:1063" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="163:226" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="263:354" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="476:518" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="554:593" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="628:670" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="706:745" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="780:819" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="855:894" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="931:970" ph="{...}" />
+                <marker date="1542598197120" expanded="true" signature="1028:1060" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPointer.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
+              <folding>
+                <marker date="1542589096207" expanded="true" signature="33:93" ph="{...}" />
+                <marker date="1542589096207" expanded="true" signature="76:91" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPointer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPanel.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/XRPanel/Scripts/XRP_Button.cs" />
+        <option value="$PROJECT_DIR$/Assets/XRPanel/Scripts/Xrp_Pointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/XRPanel/Scripts/Xrp_Button.cs" />
+        <option value="$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPointer.cs" />
+        <option value="$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpControl.cs" />
+        <option value="$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpButton.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1361" />
+    <option name="y" value="641" />
+    <option name="width" value="1934" />
+    <option name="height" value="1296" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="XRPanel" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="XRPanel" type="1045f7f1:UnityExplorerNode" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="14de7ec9-4bd9-4985-8d03-0d74d7377283" name="Default Changelist" comment="" />
+      <created>1542588710127</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1542588710127</updated>
+      <workItem from="1542588713615" duration="7851000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="7851000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1361" y="641" width="1934" height="1296" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973932" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unity" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPointer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+          <folding>
+            <marker date="1542589096207" expanded="true" signature="33:93" ph="{...}" />
+            <marker date="1542589096207" expanded="true" signature="76:91" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpControl.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1072">
+          <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+          <folding>
+            <marker date="1542598197120" expanded="true" signature="6:44" ph="..." />
+            <marker date="1542598197120" expanded="true" signature="59:1065" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="140:1063" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="163:226" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="263:354" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="476:518" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="554:593" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="628:670" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="706:745" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="780:819" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="855:894" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="931:970" ph="{...}" />
+            <marker date="1542598197120" expanded="true" signature="1028:1060" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpPanel.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
+          <folding>
+            <marker date="1542598203381" expanded="true" signature="33:1569" ph="{...}" />
+            <marker date="1542598203381" expanded="true" signature="74:1567" ph="{...}" />
+            <marker date="1542598203381" expanded="true" signature="376:660" ph="{...}" />
+            <marker date="1542598203381" expanded="true" signature="684:1564" ph="{...}" />
+            <marker date="1542598203381" expanded="true" signature="731:1021" ph="{...}" />
+            <marker date="1542598203381" expanded="true" signature="780:1016" ph="{...}" />
+            <marker date="1542598203381" expanded="true" signature="1072:1552" ph="{...}" />
+            <marker date="1542598203381" expanded="true" signature="1151:1265" ph="{...}" />
+            <marker date="1542598203381" expanded="true" signature="1377:1458" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/XRPanel/Scripts/XrpButton.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1049">
+          <caret line="97" column="64" selection-start-line="97" selection-start-column="64" selection-end-line="97" selection-end-column="64" />
+          <folding>
+            <marker date="1542598325334" expanded="false" signature="6:143" ph="..." />
+            <marker date="1542598325334" expanded="true" signature="158:3644" ph="{...}" />
+            <marker date="1542598325334" expanded="true" signature="239:3641" ph="{...}" />
+            <marker date="1542598325334" expanded="true" signature="375:447" ph="{...}" />
+            <marker date="1542598325334" expanded="true" signature="471:1005" ph="{...}" />
+            <marker date="1542598325334" expanded="true" signature="501:1000" ph="{...}" />
+            <marker date="1542598325334" expanded="true" signature="1042:1147" ph="{...}" />
+            <marker date="1542598325334" expanded="true" signature="1184:1267" ph="{...}" />
+            <marker date="1542598325334" expanded="true" signature="1326:3638" ph="{...}" />
+            <marker date="1542598325334" expanded="true" signature="1437:1838" ph="/* Debug.DrawLine(transform.position, transform.position + new Vector3(displacement.x, 0f, 0f), Color.red); ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
