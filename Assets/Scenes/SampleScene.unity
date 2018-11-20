@@ -821,6 +821,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   DebugRenderer: {fileID: 164497911}
+  ThresholdDistance: 0.01
+  TriggerDistance: 0.4
 --- !u!1 &677669197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,7 +1613,7 @@ Transform:
   m_GameObject: {fileID: 1754918979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.3, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.0094645005, y: 0.0094645005, z: 0.0094645005}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -2003,5 +2005,5 @@ LineRenderer:
     alignment: 0
     textureMode: 0
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0

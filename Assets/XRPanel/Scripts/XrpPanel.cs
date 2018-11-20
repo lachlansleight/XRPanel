@@ -62,8 +62,6 @@ namespace XRP
 				_touchCandidates[i] = -1;
 				_hoverCandidates[i] = -1;
 			}
-			
-			
 		}
 	}
 }

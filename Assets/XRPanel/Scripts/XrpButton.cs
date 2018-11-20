@@ -15,6 +15,9 @@ namespace XRP
 
 		public Renderer DebugRenderer;
 
+		public float ThresholdDistance = 0.01f;
+		public float TriggerDistance = 0.4f;
+
 		private BoxCollider _boxCollider;
 		private Transform _fadePanel;
 		private Material _fadePanelMat;
@@ -32,13 +35,15 @@ namespace XRP
 		public void Update()
 		{
 			ShowDebugColor();
-			if (ActivePointer != null) {
-				ShowDebugPointer();
-				CheckPointerPress();
 
-				if (CurrentState == State.Press) {
-					DoPointerPress();
-				}
+			if (ActivePointer == null) return;
+			
+			ShowDebugPointer();
+			if (CurrentState == State.Disabled) {
+				CheckReEnable();
+			} else {
+				if(CurrentState != State.Press) CheckForPress();
+				else DoPress();
 			}
 		}
 
@@ -73,17 +78,50 @@ namespace XRP
 			}
 		}
 
-		private void CheckPointerPress()
+		private void CheckReEnable()
 		{
 			var pointerPos = ActivePointer.transform.position;
 			var localPos = transform.InverseTransformPoint(pointerPos);
+			if (!(localPos.z > TriggerDistance)) return;
 			
-			
+			CurrentState = State.Inactive;
+			ActivePointer = null;
 		}
 
-		private void DoPointerPress()
+		private void CheckForPress()
 		{
+			var pointerPos = ActivePointer.transform.position;
+			var localPos = transform.InverseTransformPoint(pointerPos);
+			if (localPos.z < -ThresholdDistance) {
+				StartPress();
+			}
+		}
+
+		private void DoPress()
+		{
+			var pointerPos = ActivePointer.transform.position;
+			var localPos = transform.InverseTransformPoint(pointerPos);
+			var invertedLocalPos = new Vector3(localPos.x, localPos.y, -localPos.z);
+
+			if (localPos.z > ThresholdDistance) {
+				StopPress();
+				return;
+			}
 			
+			_fadePanel.localPosition = new Vector3(0f, 0f, -localPos.z);
+			_fadePanelMat.color = new Color(1f, 1f, 1f, Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0f, -TriggerDistance, localPos.z)));
+			_line.startColor = _line.endColor = _fadePanelMat.color;
+			_line.positionCount = 2;
+			var vertices = new[]
+			{
+				localPos,
+				invertedLocalPos
+			};
+			_line.SetPositions(vertices);
+
+			if (localPos.z < -TriggerDistance) {
+				Trigger();
+			}
 		}
 
 		public override void StartHover()
@@ -92,9 +130,44 @@ namespace XRP
 			AudioSource.PlayClipAtPoint(Panel.HoverClip, transform.position, 0.3f);
 		}
 
+		public override void StartTouch(XrpPointer pointer)
+		{
+			base.StartTouch(pointer);
+		}
+
+		public override void StopTouch()
+		{
+			base.StopTouch();
+		}
+
 		public override void StartPress()
 		{
+			base.StartPress();
+			
+			_line.positionCount = 2;
+			_line.enabled = true;
+			_fadePanel.gameObject.SetActive(true);
+			_fadePanel.localPosition = Vector3.zero;
+			_fadePanelMat.color = new Color(1f, 1f, 1f, 0f);
+			_line.startColor = _line.endColor = _fadePanelMat.color;
+			
 			AudioSource.PlayClipAtPoint(Panel.PressClip, transform.position, 0.3f);
+		}
+
+		public override void StopPress()
+		{
+			base.StopPress();
+			
+			_line.positionCount = 0;
+			_line.enabled = false;
+			_fadePanel.gameObject.SetActive(false);
+		}
+
+		public void Trigger()
+		{
+			OnClick.Invoke();
+			StopPress();
+			CurrentState = State.Disabled;
 		}
 
 		public override Vector3 GetDistance(Vector3 worldPoint)
