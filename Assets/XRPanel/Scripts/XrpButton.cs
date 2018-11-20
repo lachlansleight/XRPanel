@@ -127,7 +127,6 @@ namespace XRP
 		public override void StartHover()
 		{
 			base.StartHover();
-			AudioSource.PlayClipAtPoint(Panel.HoverClip, transform.position, 0.3f);
 		}
 
 		public override void StartTouch(XrpPointer pointer)

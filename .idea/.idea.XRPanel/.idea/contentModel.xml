@@ -138,6 +138,7 @@
             <e p="OneShotter.cs" t="Include" />
             <e p="XrpButton.cs" t="Include" />
             <e p="XrpControl.cs" t="Include" />
+            <e p="XrpControlGeometry.cs" t="Include" />
             <e p="XrpPanel.cs" t="Include" />
             <e p="XrpPointer.cs" t="Include" />
           </e>

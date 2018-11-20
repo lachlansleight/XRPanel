@@ -36,6 +36,7 @@ namespace XRP
 		public virtual void StartHover()
 		{
 			CurrentState = State.Hover;
+			AudioSource.PlayClipAtPoint(Panel.HoverClip, transform.position, 0.1f);
 		}
 
 		public virtual void StopHover()
