@@ -51,19 +51,19 @@ namespace XRP
 		{
 			switch (CurrentState) {
 				case State.Disabled:
-					DebugRenderer.material.color = Color.red;
+					DebugRenderer.material.color = Color.Lerp(DebugRenderer.material.color, Color.red, 0.2f);
 					break;
 				case State.Inactive:
-					DebugRenderer.material.color = Color.black;
+					DebugRenderer.material.color = Color.Lerp(DebugRenderer.material.color, Color.black, 0.2f);
 					break;
 				case State.Hover:
-					DebugRenderer.material.color = Color.gray;
+					DebugRenderer.material.color = Color.Lerp(DebugRenderer.material.color, Color.gray, 0.2f);
 					break;
 				case State.Touch:
-					DebugRenderer.material.color = Color.white;
+					DebugRenderer.material.color = Color.Lerp(DebugRenderer.material.color, Color.white, 0.2f);
 					break;
 				case State.Press:
-					DebugRenderer.material.color = Color.cyan;
+					DebugRenderer.material.color = Color.Lerp(DebugRenderer.material.color, Color.cyan, 0.2f);
 					break;
 				default:
 					Debug.LogError("Unexpected state unhandled");
@@ -151,7 +151,6 @@ namespace XRP
 			_fadePanelMat.color = new Color(1f, 1f, 1f, 0f);
 			_line.startColor = _line.endColor = _fadePanelMat.color;
 			
-			AudioSource.PlayClipAtPoint(Panel.PressClip, transform.position, 0.3f);
 		}
 
 		public override void StopPress()
@@ -166,8 +165,18 @@ namespace XRP
 		public void Trigger()
 		{
 			OnClick.Invoke();
+			
+			var indicator = Instantiate(_fadePanel.gameObject);
+			indicator.transform.parent = _fadePanel.parent;
+			indicator.transform.localPosition = _fadePanel.localPosition;
+			indicator.transform.localRotation = _fadePanel.localRotation;
+			indicator.transform.localScale = _fadePanel.localScale;
+			indicator.AddComponent<OneShotter>().StartCoroutine(FadeIndicator(indicator, 0.4f));
+			
 			StopPress();
-			CurrentState = State.Disabled;
+			CurrentState = State.Inactive;
+			ActivePointer = null;
+			AudioSource.PlayClipAtPoint(Panel.PressClip, transform.position, 0.3f);
 		}
 
 		public override Vector3 GetDistance(Vector3 worldPoint)
@@ -203,6 +212,27 @@ namespace XRP
 			pointerDisplacement.z *= transform.lossyScale.z;
 			
 			return pointerDisplacement;
+		}
+
+		IEnumerator FadeIndicator(GameObject indicator, float duration)
+		{
+			var indicatorMaterial = indicator.GetComponent<Renderer>().material;
+			
+			var startColor = indicatorMaterial.color;
+			var endColor = new Color(startColor.r, startColor.g, startColor.b, 0f);
+
+			var startScale = indicator.transform.localScale;
+			var endScale = indicator.transform.localScale * 1.2f;
+
+			for (var i = 0f; i < duration; i += Time.deltaTime) {
+				var iL = (i - 1f) * (i - 1f) * (i - 1f) * (i - 1f) * (i - 1f) + 1f;
+				indicator.transform.localScale = Vector3.Lerp(startScale, endScale, iL);
+				indicatorMaterial.color = Color.Lerp(startColor, endColor, iL);
+				yield return null;
+			}
+
+			Destroy(indicatorMaterial);
+			Destroy(indicator);
 		}
 	}
 

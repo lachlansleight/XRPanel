@@ -63,6 +63,7 @@ namespace XRP
 		public virtual void StopPress()
 		{
 			CurrentState = State.Hover;
+			ActivePointer = null;
 		}
 
 		public virtual Vector3 GetDistance(Vector3 worldPoint)
