@@ -71,5 +71,11 @@ namespace XRP
 		{
 			return Vector3.zero;
 		}
+
+		[ContextMenu("FixGeometry")]
+		public void FixGeometry()
+		{
+			GetComponentInChildren<XrpControlGeometry>().FixGeometry();
+		}
 	}
 }

@@ -141,6 +141,7 @@
             <e p="XrpControlGeometry.cs" t="Include" />
             <e p="XrpPanel.cs" t="Include" />
             <e p="XrpPointer.cs" t="Include" />
+            <e p="XrpSlider.cs" t="Include" />
           </e>
         </e>
       </e>
