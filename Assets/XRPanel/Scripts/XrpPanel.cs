@@ -9,6 +9,8 @@ namespace XRP
 
 		public float HoverDistance = 0.1f;
 		public float TouchDistance = 0.02f;
+		public float PressThresholdDistance = 0.01f;
+		public float PressMaxDistance = 0.4f;
 
 		public AudioClip HoverClip;
 		public AudioClip PressClip;
