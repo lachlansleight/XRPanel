@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace XRP
@@ -12,7 +13,6 @@ namespace XRP
 		public float CurrentValue = 0.5f;
 
 		private Transform _sliderGeometry;
-		private Transform _fadePanel;
 		private BoxCollider _boxCollider;
 		
 		public UnityFloatEvent OnValueChanged;
@@ -22,7 +22,6 @@ namespace XRP
 			base.Awake();
 
 			_sliderGeometry = transform.Find("Geometry/Main/Slider");
-			_fadePanel = transform.Find("ActiveGeometry/FadePanel");
 			_boxCollider = GetComponent<BoxCollider>();
 		}
 
@@ -55,23 +54,23 @@ namespace XRP
 			base.DoPress();
 			if (CurrentState != State.Press) return;
 			
-			_fadePanel.localScale = new Vector3(
+			FadePanel.localScale = new Vector3(
 				Mathf.InverseLerp(MinValue, MaxValue, CurrentValue),
-				_fadePanel.localScale.y, 
-				_fadePanel.localScale.z
+				FadePanel.localScale.y, 
+				FadePanel.localScale.z
 			);
 			
-			_fadePanel.localPosition = new Vector3(
+			FadePanel.localPosition = new Vector3(
 				Mathf.Lerp(0.5f, 0f, Mathf.InverseLerp(MinValue, MaxValue, CurrentValue)),
-				_fadePanel.localPosition.y,
-				_fadePanel.localPosition.z
+				FadePanel.localPosition.y,
+				FadePanel.localPosition.z
 			);
 
 			var localPoint = transform.InverseTransformPoint(ActivePointer.transform.position);
 			var preValue = CurrentValue;
 			CurrentValue = Mathf.Lerp(MinValue, MaxValue, Mathf.InverseLerp(0.5f, -0.5f, localPoint.x));
 
-			if (CurrentValue != preValue) {
+			if (Math.Abs(CurrentValue - preValue) > float.MinValue) {
 				OnValueChanged.Invoke(CurrentValue);
 			}
 		}

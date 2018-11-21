@@ -28,7 +28,7 @@ namespace XRP
 
 		public XrpPanel Panel;
 
-		private Transform _fadePanel;
+		protected Transform FadePanel;
 		private Material _fadePanelMat;
 		private LineRenderer _line;
 		
@@ -38,8 +38,8 @@ namespace XRP
 		{
 			CurrentState = State.Inactive;
 			_debugRenderer = transform.Find("Geometry/Main").GetComponent<Renderer>();
-			_fadePanel = transform.Find("ActiveGeometry/FadePanel");
-			_fadePanelMat = _fadePanel.GetComponent<Renderer>().material;
+			FadePanel = transform.Find("ActiveGeometry/FadePanel");
+			_fadePanelMat = FadePanel.GetComponent<Renderer>().material;
 			_line = transform.Find("ActiveGeometry/Line").GetComponent<LineRenderer>();
 		}
 
@@ -51,7 +51,6 @@ namespace XRP
 			
 			if (CurrentState != State.Press && CurrentState != State.Disabled) CheckForPress();
 			if (CurrentState == State.Press) {
-				if (ActivePointer == null) Debug.Log("How are we here?");
 				DoPress();
 			}
 		}
@@ -85,8 +84,8 @@ namespace XRP
 			
 			_line.positionCount = 2;
 			_line.enabled = true;
-			_fadePanel.gameObject.SetActive(true);
-			_fadePanel.localPosition = Vector3.zero;
+			FadePanel.gameObject.SetActive(true);
+			FadePanel.localPosition = Vector3.zero;
 			_fadePanelMat.color = new Color(1f, 1f, 1f, 0f);
 			_line.startColor = _line.endColor = _fadePanelMat.color;
 		}
@@ -98,7 +97,7 @@ namespace XRP
 			
 			_line.positionCount = 0;
 			_line.enabled = false;
-			_fadePanel.gameObject.SetActive(false);
+			FadePanel.gameObject.SetActive(false);
 		}
 
 		public virtual Vector3 GetDistance(Vector3 worldPoint)
@@ -117,7 +116,7 @@ namespace XRP
 				return;
 			}
 		
-			_fadePanel.localPosition = new Vector3(0f, 0f, -localPos.z);
+			FadePanel.localPosition = new Vector3(0f, 0f, -localPos.z);
 			_fadePanelMat.color = new Color(1f, 1f, 1f, Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0f, -Panel.PressMaxDistance, localPos.z)));
 			_line.startColor = _line.endColor = _fadePanelMat.color;
 			_line.positionCount = 2;
@@ -136,11 +135,11 @@ namespace XRP
 
 		protected void PopFadePanel()
 		{
-			var indicator = Instantiate(_fadePanel.gameObject);
-			indicator.transform.parent = _fadePanel.parent;
-			indicator.transform.localPosition = _fadePanel.localPosition;
-			indicator.transform.localRotation = _fadePanel.localRotation;
-			indicator.transform.localScale = _fadePanel.localScale;
+			var indicator = Instantiate(FadePanel.gameObject);
+			indicator.transform.parent = FadePanel.parent;
+			indicator.transform.localPosition = FadePanel.localPosition;
+			indicator.transform.localRotation = FadePanel.localRotation;
+			indicator.transform.localScale = FadePanel.localScale;
 			indicator.AddComponent<OneShotter>().StartCoroutine(FadeIndicator(indicator, 0.4f));
 		}
 		
