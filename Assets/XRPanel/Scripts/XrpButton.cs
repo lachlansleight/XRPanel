@@ -27,9 +27,7 @@ namespace XRP
 			
 			if (ActivePointer == null) return;
 			
-			if (CurrentState == State.Disabled) {
-				CheckReEnable();
-			}
+			if (CurrentState == State.Disabled) CheckReEnable();
 		}
 
 		
@@ -45,10 +43,11 @@ namespace XRP
 		{
 			var pointerPos = ActivePointer.transform.position;
 			var localPos = transform.InverseTransformPoint(pointerPos);
-			if (!(localPos.z > Panel.PressMaxDistance)) return;
-			
-			CurrentState = State.Inactive;
-			ActivePointer = null;
+			Debug.Log(localPos.z);
+			if (localPos.z < Panel.TouchDistance) return;
+
+
+			StopPress();
 		}
 
 		
@@ -56,14 +55,7 @@ namespace XRP
 		protected override void DoPress()
 		{
 			base.DoPress();
-			if (CurrentState != State.Press) return;
-			
-			var pointerPos = ActivePointer.transform.position;
-			var localPos = transform.InverseTransformPoint(pointerPos);
-
-			if (localPos.z < -Panel.PressMaxDistance) {
-				Trigger();
-			}
+			Trigger();
 		}
 
 		public override void StartHover()
@@ -97,9 +89,7 @@ namespace XRP
 
 			PopFadePanel();
 			
-			StopPress();
-			CurrentState = State.Inactive;
-			ActivePointer = null;
+			CurrentState = State.Disabled;
 			AudioSource.PlayClipAtPoint(Panel.PressClip, transform.position, 0.3f);
 		}
 
