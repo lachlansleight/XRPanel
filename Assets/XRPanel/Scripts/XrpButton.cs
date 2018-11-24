@@ -12,7 +12,7 @@ namespace XRP
 	{
 
 		public UnityEvent OnClick;
-
+		
 		private BoxCollider _boxCollider;
 
 		public override void Awake()

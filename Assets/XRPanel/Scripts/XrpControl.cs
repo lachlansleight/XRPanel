@@ -23,10 +23,25 @@ namespace XRP
 			public float Distance;
 		}
 
-		public State CurrentState;
+		private State _currentState;
+
+		public State CurrentState
+		{
+			get { return _currentState; }
+			set
+			{
+				if (value != _currentState) OnStateChange?.Invoke(value);
+
+				_currentState = value;
+			}
+		}
 		public XrpPointer ActivePointer;
 
 		public XrpPanel Panel;
+
+		public delegate void StateChangeDelegate(State newState);
+
+		public StateChangeDelegate OnStateChange;
 
 		protected Transform FadePanel;
 		private Material _fadePanelMat;
