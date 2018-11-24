@@ -41,6 +41,14 @@ namespace XRP
 
 		public delegate void StateChangeDelegate(State newState);
 
+		public delegate void EmptyDelegate();
+
+		public delegate void FloatDelegate(float value);
+
+		public delegate void IntDelegate(int value);
+
+		public delegate void BoolDelegate(bool value);
+
 		public StateChangeDelegate OnStateChange;
 
 		protected Transform FadePanel;

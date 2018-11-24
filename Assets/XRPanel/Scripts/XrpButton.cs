@@ -11,7 +11,8 @@ namespace XRP
 	public class XrpButton : XrpControl
 	{
 
-		public UnityEvent OnClick;
+		public UnityEvent OnClickEvent;
+		public EmptyDelegate OnClick;
 		
 		private BoxCollider _boxCollider;
 
@@ -85,7 +86,8 @@ namespace XRP
 
 		public void Trigger()
 		{
-			OnClick.Invoke();
+			OnClickEvent.Invoke();
+			OnClick?.Invoke();
 
 			PopFadePanel();
 			
