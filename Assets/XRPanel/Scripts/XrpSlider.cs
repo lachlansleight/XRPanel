@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace XRP
@@ -11,8 +10,9 @@ namespace XRP
 		public float CurrentValue = 0.5f;
 
 		private Transform _sliderGeometry;
-		
-		public UnityFloatEvent OnValueChanged;
+
+		public FloatDelegate OnValueChanged;
+		public UnityFloatEvent OnValueChangedEvent;
 
 		public override void Awake()
 		{
@@ -66,8 +66,9 @@ namespace XRP
 			var preValue = CurrentValue;
 			CurrentValue = Mathf.Lerp(MinValue, MaxValue, Mathf.InverseLerp(0.5f, -0.5f, localPoint.x));
 
-			if (Math.Abs(CurrentValue - preValue) > float.MinValue) {
-				OnValueChanged.Invoke(CurrentValue);
+			if (Mathf.Abs(CurrentValue - preValue) > float.MinValue) {
+				OnValueChanged?.Invoke(CurrentValue);
+				OnValueChangedEvent.Invoke(CurrentValue);
 			}
 		}
 	}
