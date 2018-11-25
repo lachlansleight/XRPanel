@@ -23,7 +23,11 @@ public class TestSpawner : MonoBehaviour
 		var newObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		newObj.transform.rotation = Random.rotation;
 		newObj.transform.position = transform.position;
-		newObj.transform.localScale = Vector3.one * 0.2f;
+		newObj.transform.localScale = new Vector3(
+			Random.Range(0.5f, 1.5f), 
+			Random.Range(0.5f, 1.5f), 
+			Random.Range(0.5f, 1.5f)
+		) * 0.2f;
 		newObj.AddComponent<Rigidbody>();
 		newObj.GetComponent<Renderer>().material.color = outputColor;
 	}
