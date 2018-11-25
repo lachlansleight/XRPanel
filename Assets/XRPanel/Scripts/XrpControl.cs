@@ -6,25 +6,9 @@ namespace XRP
 	[RequireComponent(typeof(Collider))]
 	public class XrpControl : MonoBehaviour
 	{
-		public enum State
-		{
-			Inactive,
-			Hover,
-			Touch,
-			Press,
-			Disabled
-		}
-
-		public struct PointerDisplacement
-		{
-			public float X;
-			public float Y;
-			public float Z;
-			public float Distance;
-		}
+		
 
 		private State _currentState;
-
 		public State CurrentState
 		{
 			get { return _currentState; }
@@ -35,18 +19,15 @@ namespace XRP
 				_currentState = value;
 			}
 		}
+		
 		public XrpPointer ActivePointer;
-
+		public float ClosestPointerDistance;
 		public XrpPanel Panel;
 
 		public delegate void StateChangeDelegate(State newState);
-
 		public delegate void EmptyDelegate();
-
 		public delegate void FloatDelegate(float value);
-
 		public delegate void IntDelegate(int value);
-
 		public delegate void BoolDelegate(bool value);
 
 		public StateChangeDelegate OnStateChange;
@@ -54,8 +35,9 @@ namespace XRP
 		protected Transform FadePanel;
 		private Material _fadePanelMat;
 		private LineRenderer _line;
-		
+		private BoxCollider _boxCollider;
 		private Renderer _debugRenderer;
+		
 
 		public virtual void Awake()
 		{
@@ -64,6 +46,7 @@ namespace XRP
 			FadePanel = transform.Find("ActiveGeometry/FadePanel");
 			_fadePanelMat = FadePanel.GetComponent<Renderer>().material;
 			_line = transform.Find("ActiveGeometry/Line").GetComponent<LineRenderer>();
+			_boxCollider = GetComponent<BoxCollider>();
 		}
 
 		public virtual void Update()
@@ -125,7 +108,37 @@ namespace XRP
 
 		public virtual Vector3 GetDistance(Vector3 worldPoint)
 		{
-			return Vector3.zero;
+			var localPoint = transform.InverseTransformPoint(worldPoint);
+			var displacement = localPoint;
+			
+			//we need the distance to the rectangular bounds, not the center
+			var pointerDisplacement = new Vector3();
+			if (displacement.x > _boxCollider.size.x * -0.5f && displacement.x < _boxCollider.size.x * 0.5f)
+				pointerDisplacement.x = 0f;
+			else if (displacement.x < _boxCollider.size.x * -0.5f)
+				pointerDisplacement.x = displacement.x - _boxCollider.size.x * -0.5f;
+			else if (displacement.x > transform.localScale.x * 0.5f)
+				pointerDisplacement.x = displacement.x - _boxCollider.size.x * 0.5f;
+			
+			if (displacement.y > _boxCollider.size.y * -0.5f && displacement.y < _boxCollider.size.y * 0.5f)
+				pointerDisplacement.y = 0f;
+			else if (displacement.y < _boxCollider.size.y * -0.5f)
+				pointerDisplacement.y = displacement.y - _boxCollider.size.y * -0.5f;
+			else if (displacement.y > _boxCollider.size.y * 0.5f)
+				pointerDisplacement.y = displacement.y - _boxCollider.size.y * 0.5f;
+			
+			if (displacement.z > _boxCollider.size.z * -0.5f && displacement.z < _boxCollider.size.z * 0.5f)
+				pointerDisplacement.z = 0f;
+			else if (displacement.z < _boxCollider.size.z * -0.5f)
+				pointerDisplacement.z = displacement.z - _boxCollider.size.z * -0.5f;
+			else if (displacement.z > _boxCollider.size.z * 0.5f)
+				pointerDisplacement.z = displacement.z - _boxCollider.size.z * 0.5f;
+
+			pointerDisplacement.x *= transform.lossyScale.x;
+			pointerDisplacement.y *= transform.lossyScale.y;
+			pointerDisplacement.z *= transform.lossyScale.z;
+			
+			return pointerDisplacement;
 		}
 
 		protected virtual void DoPress()
@@ -191,7 +204,17 @@ namespace XRP
 					_debugRenderer.material.color = Color.Lerp(_debugRenderer.material.color, Color.black, 0.2f);
 					break;
 				case State.Hover:
-					_debugRenderer.material.color = Color.Lerp(_debugRenderer.material.color, Color.gray, 0.2f);
+					var hoverColor = Color.gray;
+					//i.e. we are within hover range
+					if (ClosestPointerDistance > 0f) {
+						hoverColor = Color.Lerp(
+							Color.Lerp(Color.black, Color.gray, 0.2f),
+							Color.Lerp(Color.gray, Color.white, 0.8f),
+							Mathf.InverseLerp(Panel.HoverDistance, Panel.TouchDistance, ClosestPointerDistance)
+						);
+					}
+
+					_debugRenderer.material.color = Color.Lerp(_debugRenderer.material.color, hoverColor, 0.2f);
 					break;
 				case State.Touch:
 					_debugRenderer.material.color = Color.Lerp(_debugRenderer.material.color, Color.white, 0.2f);
