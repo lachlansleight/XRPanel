@@ -64,6 +64,7 @@ namespace XRP
 
 			if (Mathf.Abs(CurrentValue - preValue) > float.MinValue) {
 				OnValueChanged?.Invoke(CurrentValue);
+				OnValueChangedEvent.Invoke(CurrentValue);
 			}
 		}
 	}
