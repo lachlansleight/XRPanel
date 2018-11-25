@@ -141,6 +141,7 @@
             <e p="XrpCanvasAlphaCopier.cs" t="Include" />
             <e p="XrpControl.cs" t="Include" />
             <e p="XrpControlGeometry.cs" t="Include" />
+            <e p="XrpCopyMaterialColor.cs" t="Include" />
             <e p="XrpDial.cs" t="Include" />
             <e p="XrpPanel.cs" t="Include" />
             <e p="XrpPointer.cs" t="Include" />
