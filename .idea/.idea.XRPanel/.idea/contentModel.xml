@@ -131,6 +131,7 @@
         <e p="XRPanel" t="Include">
           <e p="Example" t="Include">
             <e p="Scripts" t="Include">
+              <e p="Lights.cs" t="Include" />
               <e p="TestSpawner.cs" t="Include" />
             </e>
           </e>
@@ -143,6 +144,8 @@
             <e p="XrpControlGeometry.cs" t="Include" />
             <e p="XrpCopyMaterialColor.cs" t="Include" />
             <e p="XrpDial.cs" t="Include" />
+            <e p="XrpIntSlider.cs" t="Include" />
+            <e p="XrpIntSliderGeometry.cs" t="Include" />
             <e p="XrpPanel.cs" t="Include" />
             <e p="XrpPointer.cs" t="Include" />
             <e p="XrpSlider.cs" t="Include" />

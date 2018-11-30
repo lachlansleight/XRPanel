@@ -14,14 +14,9 @@ namespace XRP
 		private Transform _top;
 		private Transform _bottom;
 
-		public void Awake()
+		public virtual void Awake()
 		{
 			FixGeometry();
-		}
-
-		public void Update()
-		{
-
 		}
 
 		private void FetchGeometry()
@@ -34,7 +29,7 @@ namespace XRP
 		}
 
 		[ContextMenu("FixGeometry")]
-		public void FixGeometry()
+		public virtual void FixGeometry()
 		{
 			if (_main == null) FetchGeometry();
 
