@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace XRP
 {
-	
 	public class XrpSlider : XrpControl
 	{
 		public float MinValue = 0f;

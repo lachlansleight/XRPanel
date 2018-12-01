@@ -1,53 +1,39 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace XRP
 {
-	public class XrpIntSlider : XrpControl
+	public class XrpIntDial : XrpControl
 	{
-		
-		public int MinValue = 0;
-		public int MaxValue = 5;
-		public int CurrentValue = 2;
-		private float _currentDisplayValue = 2f;
-
-		private Transform _sliderGeometry;
-
 		public IntDelegate OnValueChanged;
 		public UnityIntEvent OnValueChangedEvent;
+
+		private Transform _main;
+
+		public int MinValue = 0;
+		public int MaxValue = 4;
+		public int CurrentValue = 1;
+		private float _currentDisplayValue;
+
+		private Image _fillImage;
 
 		public override void Awake()
 		{
 			base.Awake();
-
-			_sliderGeometry = transform.Find("Geometry/Main/Slider");
+			
+			_main = transform.Find("Geometry/Main");
+			_fillImage = transform.Find("ActiveGeometry/FadePanel/Canvas/Image").GetComponent<Image>();
 		}
-
+		
 		public override void Update()
 		{
 			base.Update();
-			if (CurrentState != State.Press) _currentDisplayValue = CurrentValue;
-			
-			SetSliderGeometry();
+
+			var valueLerp = Mathf.InverseLerp(MinValue, MaxValue, _currentDisplayValue);
+			_main.localRotation = Quaternion.Euler(Mathf.Lerp(150f, -150f, valueLerp), 90f, -90f);
+			_fillImage.fillAmount = valueLerp;
 		}
-
-		private void SetSliderGeometry()
-		{
-			var sliderLerpValue = Mathf.InverseLerp(MinValue, MaxValue, _currentDisplayValue);
-			
-			//find shortest side - that side x 0.05 = width of border geometry and width of padding
-			var shortest = Mathf.Min(transform.localScale.x, transform.localScale.y);
-			var gapX = 0.05f * shortest / transform.localScale.x;
-			var gapY = 0.05f * shortest / transform.localScale.y;
-
-			var maxSize = 1f - (gapX * 2f);
-			var xScale = Mathf.Lerp(0f, maxSize, sliderLerpValue);
-			var yScale = 1f - (gapY * 2f);
-
-			_sliderGeometry.localScale = new Vector3(xScale, yScale, 1.5f);
-
-			_sliderGeometry.localPosition = new Vector3(Mathf.Lerp(-maxSize / 2f, 0f, sliderLerpValue), 0f, 0f);
-		}
-
+		
 		public override void StopPress()
 		{
 			base.StopPress();
@@ -65,27 +51,31 @@ namespace XRP
 				OnValueChangedEvent.Invoke(CurrentValue);
 			}
 		}
-
+		
 		protected override void DoPress()
 		{
 			base.DoPress();
 			if (CurrentState != State.Press) return;
 			
+			/*
 			FadePanel.localScale = new Vector3(
-				Mathf.InverseLerp(MinValue, MaxValue, _currentDisplayValue),
+				Mathf.InverseLerp(MinValue, MaxValue, CurrentValue),
 				FadePanel.localScale.y, 
 				FadePanel.localScale.z
 			);
 			
 			FadePanel.localPosition = new Vector3(
-				Mathf.Lerp(0.5f, 0f, Mathf.InverseLerp(MinValue, MaxValue, _currentDisplayValue)),
+				Mathf.Lerp(0.5f, 0f, Mathf.InverseLerp(MinValue, MaxValue, CurrentValue)),
 				FadePanel.localPosition.y,
 				FadePanel.localPosition.z
 			);
+			*/
 
 			var localPoint = transform.InverseTransformPoint(ActivePointer.transform.position);
+			var pointAngle = Mathf.Atan2(-localPoint.x, localPoint.y) * Mathf.Rad2Deg;
+			
 			var preValue = CurrentValue;
-			_currentDisplayValue = Mathf.Lerp(MinValue, MaxValue, Mathf.InverseLerp(0.5f, -0.5f, localPoint.x));
+			_currentDisplayValue = Mathf.Lerp(MinValue, MaxValue, Mathf.InverseLerp(-150f, 150f, pointAngle));
 			var remainder = _currentDisplayValue % 1f;
 			remainder = QuinticLerpInOut(remainder);
 			_currentDisplayValue = Mathf.Floor(_currentDisplayValue) + remainder;
@@ -98,13 +88,12 @@ namespace XRP
 				OnValueChangedEvent.Invoke(CurrentValue);
 			}
 		}
-
+		
 		private float QuinticLerpInOut(float t)
 		{
 			if (t < 0.5f) return 16f * t * t * t * t * t;
 			t--;
 			return 16f * t * t * t * t * t + 1f;
 		}
-		
 	}
 }
