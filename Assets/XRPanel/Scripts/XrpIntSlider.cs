@@ -65,6 +65,12 @@ namespace XRP
 				OnValueChangedEvent.Invoke(CurrentValue);
 			}
 		}
+		
+		[ContextMenu("FixMarkerGeometry")]
+		public void FixMarkerGeometry()
+		{
+			GetComponentInChildren<XrpIntSliderGeometry>().FixGeometry();
+		}
 
 		protected override void DoPress()
 		{

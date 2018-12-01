@@ -89,6 +89,12 @@ namespace XRP
 			}
 		}
 		
+		[ContextMenu("FixMarkerGeometry")]
+		public void FixMarkerGeometry()
+		{
+			GetComponentInChildren<XrpIntDialGeometry>().FixGeometry();
+		}
+		
 		private float QuinticLerpInOut(float t)
 		{
 			if (t < 0.5f) return 16f * t * t * t * t * t;
