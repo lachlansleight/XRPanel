@@ -58,6 +58,9 @@ namespace XRP
 
 			var localPoint = transform.InverseTransformPoint(ActivePointer.transform.position);
 			var pointAngle = Mathf.Atan2(-localPoint.x, localPoint.y) * Mathf.Rad2Deg;
+			var pointRadius = new Vector2(localPoint.x, localPoint.y).magnitude * 2f;
+
+			_fillImage.transform.parent.parent.localScale = Vector3.one * Mathf.Max(1f, pointRadius);
 			
 			var preValue = CurrentValue;
 			CurrentValue = Mathf.Lerp(MinValue, MaxValue, Mathf.InverseLerp(-145f, 145f, pointAngle));

@@ -77,9 +77,11 @@ namespace XRP
 			base.DoPress();
 			if (CurrentState != State.Press) return;
 			
+			var localPoint = transform.InverseTransformPoint(ActivePointer.transform.position);
+			
 			FadePanel.localScale = new Vector3(
 				Mathf.InverseLerp(MinValue, MaxValue, _currentDisplayValue),
-				FadePanel.localScale.y, 
+				Mathf.Max(1f, Mathf.Abs(localPoint.y) * 2f),
 				FadePanel.localScale.z
 			);
 			
@@ -89,7 +91,6 @@ namespace XRP
 				FadePanel.localPosition.z
 			);
 
-			var localPoint = transform.InverseTransformPoint(ActivePointer.transform.position);
 			var preValue = CurrentValue;
 			_currentDisplayValue = Mathf.Lerp(MinValue, MaxValue, Mathf.InverseLerp(0.5f, -0.5f, localPoint.x));
 			var remainder = _currentDisplayValue % 1f;

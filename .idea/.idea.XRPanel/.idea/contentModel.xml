@@ -136,6 +136,11 @@
               <e p="TestSpawner.cs" t="Include" />
             </e>
           </e>
+          <e p="Resources" t="Include">
+            <e p="Shaders" t="Include">
+              <e p="UnlitTransparentColor.shader" t="Include" />
+            </e>
+          </e>
           <e p="Scripts" t="Include">
             <e p="EnumsAndClasses.cs" t="Include" />
             <e p="OneShotter.cs" t="Include" />

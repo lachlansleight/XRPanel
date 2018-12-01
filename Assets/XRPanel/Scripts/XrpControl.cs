@@ -169,7 +169,7 @@ namespace XRP
 			}
 		
 			FadePanel.localPosition = new Vector3(0f, 0f, -localPos.z);
-			_fadePanelMat.color = new Color(1f, 1f, 1f, 0.4f * Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0f, -Panel.PressMaxDistance, localPos.z)));
+			_fadePanelMat.color = new Color(1f, 1f, 1f, 0.2f * Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0f, -Panel.PressMaxDistance, localPos.z)));
 			_line.startColor = _line.endColor = _fadePanelMat.color;
 			_line.positionCount = 2;
 
