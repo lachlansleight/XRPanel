@@ -7,6 +7,7 @@ namespace XRP
 		private XrpPointer[] _pointers;
 		private XrpControl[] _controls;
 
+		public float PointerSize = 0.015f;
 		public float HoverDistance = 0.1f;
 		public float TouchDistance = 0.02f;
 		public float PressThresholdDistance = 0.01f;

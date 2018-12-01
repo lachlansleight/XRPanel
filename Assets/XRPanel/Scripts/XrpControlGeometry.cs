@@ -13,6 +13,7 @@ namespace XRP
 		private Transform _left;
 		private Transform _top;
 		private Transform _bottom;
+		private Transform _pointerIndicator;
 
 		public virtual void Awake()
 		{

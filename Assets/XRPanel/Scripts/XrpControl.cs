@@ -37,6 +37,10 @@ namespace XRP
 		private LineRenderer _line;
 		private BoxCollider _boxCollider;
 		private Renderer _debugRenderer;
+		private Transform _pointerIndicator;
+		private float _pointerIndicatorTargetSize = 0f;
+		private float _pointerIndicatorCurrentSize = 0f;
+		private Vector3 _pointerIndicatorScale;
 		
 
 		public virtual void Awake()
@@ -46,6 +50,7 @@ namespace XRP
 			FadePanel = transform.Find("ActiveGeometry/FadePanel");
 			_fadePanelMat = FadePanel.GetComponent<Renderer>().material;
 			_line = transform.Find("ActiveGeometry/Line").GetComponent<LineRenderer>();
+			_pointerIndicator = transform.Find("ActiveGeometry/PointerIndicator");
 			_boxCollider = GetComponent<BoxCollider>();
 		}
 
@@ -53,6 +58,13 @@ namespace XRP
 		{
 			if (_debugRenderer != null) ShowDebugColor();
 
+			_pointerIndicatorCurrentSize = Mathf.Lerp(_pointerIndicatorCurrentSize, _pointerIndicatorTargetSize, 0.1f);
+			_pointerIndicator.localScale = _pointerIndicatorCurrentSize * new Vector3(
+				1f / transform.lossyScale.x,
+				1f / transform.lossyScale.y,
+				1f / transform.lossyScale.z
+			);
+			
 			if (ActivePointer == null) return;
 			
 			if (CurrentState != State.Press && CurrentState != State.Disabled) CheckForPress();
@@ -94,6 +106,7 @@ namespace XRP
 			FadePanel.localPosition = Vector3.zero;
 			_fadePanelMat.color = new Color(1f, 1f, 1f, 0f);
 			_line.startColor = _line.endColor = _fadePanelMat.color;
+			_pointerIndicatorTargetSize = Panel.PointerSize;
 		}
 		
 		public virtual void StopPress()
@@ -104,6 +117,7 @@ namespace XRP
 			_line.positionCount = 0;
 			_line.enabled = false;
 			FadePanel.gameObject.SetActive(false);
+			_pointerIndicatorTargetSize = 0f;
 		}
 
 		public virtual Vector3 GetDistance(Vector3 worldPoint)
@@ -146,6 +160,8 @@ namespace XRP
 			var pointerPos = ActivePointer.transform.position;
 			var localPos = transform.InverseTransformPoint(pointerPos);
 			var invertedLocalPos = new Vector3(localPos.x, localPos.y, -localPos.z);
+			
+			_pointerIndicator.transform.localPosition = invertedLocalPos;
 
 			if (localPos.z > Panel.PressThresholdDistance) {
 				StopPress();
