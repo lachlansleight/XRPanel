@@ -33,7 +33,7 @@ namespace XRP
 			base.Update();
 
 			var valueLerp = Mathf.InverseLerp(MinValue, MaxValue, CurrentValue);
-			_main.localRotation = Quaternion.Euler(Mathf.Lerp(150f, -150f, valueLerp), 90f, -90f);
+			_main.localRotation = Quaternion.Euler(Mathf.Lerp(145f, -145f, valueLerp), 90f, -90f);
 			_fillImage.fillAmount = valueLerp;
 		}
 		
@@ -60,7 +60,7 @@ namespace XRP
 			var pointAngle = Mathf.Atan2(-localPoint.x, localPoint.y) * Mathf.Rad2Deg;
 			
 			var preValue = CurrentValue;
-			CurrentValue = Mathf.Lerp(MinValue, MaxValue, Mathf.InverseLerp(-150f, 150f, pointAngle));
+			CurrentValue = Mathf.Lerp(MinValue, MaxValue, Mathf.InverseLerp(-145f, 145f, pointAngle));
 
 			if (Mathf.Abs(CurrentValue - preValue) > float.MinValue) {
 				OnValueChanged?.Invoke(CurrentValue);

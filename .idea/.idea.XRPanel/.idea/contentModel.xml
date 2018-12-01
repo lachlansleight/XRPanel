@@ -146,6 +146,7 @@
             <e p="XrpCopyMaterialColor.cs" t="Include" />
             <e p="XrpDial.cs" t="Include" />
             <e p="XrpIntDial.cs" t="Include" />
+            <e p="XrpIntDialGeometry.cs" t="Include" />
             <e p="XrpIntSlider.cs" t="Include" />
             <e p="XrpIntSliderGeometry.cs" t="Include" />
             <e p="XrpPanel.cs" t="Include" />
