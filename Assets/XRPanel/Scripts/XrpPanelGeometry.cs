@@ -17,6 +17,7 @@ namespace XRP
 		private Transform _topLeft;
 		private Transform _bottomRight;
 		private Transform _bottomLeft;
+		private RectTransform _canvas;
 
 		private void FetchGeometry()
 		{
@@ -26,6 +27,7 @@ namespace XRP
 			_topLeft = transform.Find("Geometry/TopLeft");
 			_bottomRight = transform.Find("Geometry/BottomRight");
 			_bottomLeft = transform.Find("Geometry/BottomLeft");
+			_canvas = transform.Find("Canvas").GetComponent<RectTransform>();
 		}
 
 		public void SetPanelSize(Vector2 size)
@@ -57,6 +59,10 @@ namespace XRP
 
 			_front.localPosition = new Vector3(0f, 0f, -0.0025f);
 			_back.localPosition = new Vector3(0f, 0f, -PanelDepth + 0.005f);
+			
+			_canvas.offsetMin = 0.5f * new Vector2(-PanelSize.x / _canvas.localScale.x, -PanelSize.y / _canvas.localScale.y);
+			_canvas.offsetMax = 0.5f * new Vector2(PanelSize.x / _canvas.localScale.x, PanelSize.y / _canvas.localScale.y);
+			_canvas.localPosition = Vector3.zero;
 
 			_topRight.localPosition = new Vector3(
 				-PanelSize.x * 0.5f + 0.005f,
