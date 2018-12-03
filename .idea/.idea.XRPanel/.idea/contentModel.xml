@@ -155,6 +155,7 @@
             <e p="XrpIntSlider.cs" t="Include" />
             <e p="XrpIntSliderGeometry.cs" t="Include" />
             <e p="XrpPanel.cs" t="Include" />
+            <e p="XrpPanelGeometry.cs" t="Include" />
             <e p="XrpPointer.cs" t="Include" />
             <e p="XrpSlider.cs" t="Include" />
             <e p="XrpToggle.cs" t="Include" />
