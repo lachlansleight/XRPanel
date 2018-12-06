@@ -9,16 +9,16 @@ namespace XRP
 	public class XrpDial : XrpControl
 	{
 
-		public FloatDelegate OnValueChanged;
-		public UnityFloatEvent OnValueChangedEvent;
-
-		private Transform _main;
-
 		public float MinValue = 0f;
 		public float MaxValue = 1f;
 		public float CurrentValue = 0.5f;
 
+
+		public FloatDelegate OnValueChanged;
+		public UnityFloatEvent OnValueChangedEvent;
+
 		private Image _fillImage;
+		private Transform _main;
 
 		public override void Awake()
 		{
@@ -26,6 +26,14 @@ namespace XRP
 			
 			_main = transform.Find("Geometry/Main");
 			_fillImage = transform.Find("ActiveGeometry/FadePanel/Canvas/Image").GetComponent<Image>();
+		}
+		
+		public override void Start()
+		{
+			if (ThrowEventOnStart) {
+				OnValueChangedEvent.Invoke(CurrentValue);
+				OnValueChanged?.Invoke(CurrentValue);
+			}
 		}
 		
 		public override void Update()

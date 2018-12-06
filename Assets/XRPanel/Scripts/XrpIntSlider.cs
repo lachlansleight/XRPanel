@@ -8,18 +8,28 @@ namespace XRP
 		public int MinValue = 0;
 		public int MaxValue = 5;
 		public int CurrentValue = 2;
+		
+		public IntDelegate OnValueChanged;
+		public UnityIntEvent OnValueChangedEvent;
 		private float _currentDisplayValue = 2f;
 
 		private Transform _sliderGeometry;
 
-		public IntDelegate OnValueChanged;
-		public UnityIntEvent OnValueChangedEvent;
 
 		public override void Awake()
 		{
 			base.Awake();
 
 			_sliderGeometry = transform.Find("Geometry/Main/Slider");
+			_currentDisplayValue = CurrentValue;
+		}
+		
+		public override void Start()
+		{
+			if (ThrowEventOnStart) {
+				OnValueChangedEvent.Invoke(CurrentValue);
+				OnValueChanged?.Invoke(CurrentValue);
+			}
 		}
 
 		public override void Update()

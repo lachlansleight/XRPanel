@@ -5,14 +5,15 @@ namespace XRP
 {
 	public class XrpIntDial : XrpControl
 	{
-		public IntDelegate OnValueChanged;
-		public UnityIntEvent OnValueChangedEvent;
-
-		private Transform _main;
 
 		public int MinValue = 0;
 		public int MaxValue = 4;
 		public int CurrentValue = 1;
+		
+		public IntDelegate OnValueChanged;
+		public UnityIntEvent OnValueChangedEvent;
+
+		private Transform _main;
 		private float _currentDisplayValue;
 
 		private Image _fillImage;
@@ -23,6 +24,15 @@ namespace XRP
 			
 			_main = transform.Find("Geometry/Main");
 			_fillImage = transform.Find("ActiveGeometry/FadePanel/Canvas/Image").GetComponent<Image>();
+			_currentDisplayValue = CurrentValue;
+		}
+		
+		public override void Start()
+		{
+			if (ThrowEventOnStart) {
+				OnValueChangedEvent.Invoke(CurrentValue);
+				OnValueChanged?.Invoke(CurrentValue);
+			}
 		}
 		
 		public override void Update()

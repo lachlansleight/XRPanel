@@ -4,20 +4,30 @@ namespace XRP
 {
 	public class XrpSlider : XrpControl
 	{
+		
 		public float MinValue = 0f;
 		public float MaxValue = 1f;
 		public float CurrentValue = 0.5f;
+		
+		public FloatDelegate OnValueChanged;
+		public UnityFloatEvent OnValueChangedEvent;
 
 		private Transform _sliderGeometry;
 
-		public FloatDelegate OnValueChanged;
-		public UnityFloatEvent OnValueChangedEvent;
 
 		public override void Awake()
 		{
 			base.Awake();
 
 			_sliderGeometry = transform.Find("Geometry/Main/Slider");
+		}
+		
+		public override void Start()
+		{
+			if (ThrowEventOnStart) {
+				OnValueChangedEvent.Invoke(CurrentValue);
+				OnValueChanged?.Invoke(CurrentValue);
+			}
 		}
 
 		public override void Update()

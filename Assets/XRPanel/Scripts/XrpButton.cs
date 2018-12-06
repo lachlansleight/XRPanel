@@ -10,9 +10,16 @@ namespace XRP
 	[RequireComponent(typeof(BoxCollider))]
 	public class XrpButton : XrpControl
 	{
-
 		public UnityEvent OnClickEvent;
 		public EmptyDelegate OnClick;
+
+		public override void Start()
+		{
+			if (ThrowEventOnStart) {
+				OnClickEvent.Invoke();
+				OnClick?.Invoke();
+			}
+		}
 
 		public override void Update()
 		{

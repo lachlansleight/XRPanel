@@ -20,9 +20,10 @@ namespace XRP
 			}
 		}
 		
-		public XrpPointer ActivePointer;
-		public float ClosestPointerDistance;
-		public XrpPanel Panel;
+		[HideInInspector] public XrpPointer ActivePointer;
+		[HideInInspector] public float ClosestPointerDistance;
+		[HideInInspector] public XrpPanel Panel;
+
 
 		public delegate void StateChangeDelegate(State newState);
 		public delegate void EmptyDelegate();
@@ -31,6 +32,8 @@ namespace XRP
 		public delegate void BoolDelegate(bool value);
 
 		public StateChangeDelegate OnStateChange;
+		
+		public bool ThrowEventOnStart = false;
 
 		protected Transform FadePanel;
 		private Material _fadePanelMat;
@@ -53,6 +56,8 @@ namespace XRP
 			_pointerIndicator = transform.Find("ActiveGeometry/PointerIndicator");
 			_boxCollider = GetComponent<BoxCollider>();
 		}
+
+		public virtual void Start() { }
 
 		public virtual void Update()
 		{

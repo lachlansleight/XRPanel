@@ -8,18 +8,26 @@ namespace XRP
 	public class XrpToggle : XrpControl
 	{
 
+		public bool Toggled = false;
+
 		public BoolDelegate OnValueChanged;
 		public UnityBoolEvent OnValueChangedEvent;
 
 		private Transform _main;
-
-		public bool Toggled = false;
 
 		public override void Awake()
 		{
 			base.Awake();
 			
 			_main = transform.Find("Geometry/Main");
+		}
+		
+		public override void Start()
+		{
+			if (ThrowEventOnStart) {
+				OnValueChangedEvent.Invoke(Toggled);
+				OnValueChanged?.Invoke(Toggled);
+			}
 		}
 		
 		public override void Update()
