@@ -6,9 +6,18 @@ public class ExampleParticles : MonoBehaviour
 {
 
 	public Material[] ParticleMats;
+	public float[] ParticleMaterialSizes;
 	public Color[] ParticleColors;
 	
 	private ParticleSystem _particles;
+
+	private bool _oscillationX;
+	private bool _oscillationY;
+	private bool _oscillationZ;
+	private float _tX;
+	private float _tY;
+	private float _tZ;
+	private Vector3 _centerPosition;
 
 	private float _oldEmissionCount;
 	private Color _startCol;
@@ -20,6 +29,20 @@ public class ExampleParticles : MonoBehaviour
 		_particles = GetComponent<ParticleSystem>();
 		_oldEmissionCount = _particles.emission.rateOverTime.constant;
 		SetEmission(false);
+		_centerPosition = transform.position;
+	}
+
+	public void Update()
+	{
+		transform.position = _centerPosition + new Vector3(
+			1f * Mathf.Sin(_tX),
+			1f * Mathf.Sin(_tY),
+			1f * Mathf.Sin(_tZ)
+		);
+
+		_tX += _oscillationX ? Time.deltaTime / 1.5f : 0f;
+		_tY += _oscillationY ? Time.deltaTime / 1.1f : 0f;
+		_tZ += _oscillationZ ? Time.deltaTime / 1.8f : 0f;
 	}
 
 	public void SetEmission(bool value)
@@ -86,5 +109,23 @@ public class ExampleParticles : MonoBehaviour
 
 		var ren = _particles.GetComponent<ParticleSystemRenderer>();
 		ren.sharedMaterial = ParticleMats[index];
+
+		var sol = _particles.sizeOverLifetime;
+		sol.size = new ParticleSystem.MinMaxCurve(ParticleMaterialSizes[index]);
+	}
+
+	public void SetOscillationX(bool value)
+	{
+		_oscillationX = value;
+	}
+	
+	public void SetOscillationY(bool value)
+	{
+		_oscillationY = value;
+	}
+	
+	public void SetOscillationZ(bool value)
+	{
+		_oscillationZ = value;
 	}
 }
