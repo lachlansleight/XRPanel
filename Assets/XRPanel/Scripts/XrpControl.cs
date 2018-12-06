@@ -159,24 +159,33 @@ namespace XRP
 		{
 			var pointerPos = ActivePointer.transform.position;
 			var localPos = transform.InverseTransformPoint(pointerPos);
-			var invertedLocalPos = new Vector3(localPos.x, localPos.y, -localPos.z);
-			
+			var invertedLocalPos = new Vector3(localPos.x, localPos.y, -localPos.z) { z = 0f };
+
 			_pointerIndicator.transform.localPosition = invertedLocalPos;
 
 			if (localPos.z > Panel.PressThresholdDistance) {
 				StopPress();
 				return;
 			}
-		
+
+			var fadePanelOpacityTemp = 0f;
+			var lineOpacityTemp = 1f;
+
+			var opacityLerpFactor = Mathf.InverseLerp(0f, -Panel.PressMaxDistance, localPos.z);
+			var fadePanelOpacity = fadePanelOpacityTemp * Mathf.Lerp(0f, 1f, opacityLerpFactor);
+			var lineOpacity = lineOpacityTemp * Mathf.Lerp(0f, 1f, opacityLerpFactor);
+			
 			FadePanel.localPosition = new Vector3(0f, 0f, -localPos.z);
-			_fadePanelMat.color = new Color(1f, 1f, 1f, 0.2f * Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0f, -Panel.PressMaxDistance, localPos.z)));
-			_line.startColor = _line.endColor = _fadePanelMat.color;
+			_fadePanelMat.color = new Color(1f, 1f, 1f, fadePanelOpacity);
+			_line.startColor = _line.endColor = new Color(1f, 1f, 1f, lineOpacity);
 			_line.positionCount = 2;
 
+			/*
 			localPos.x = Mathf.Clamp(localPos.x, -0.5f, 0.5f);
 			localPos.y = Mathf.Clamp(localPos.y, -0.5f, 0.5f);
 			invertedLocalPos.x = localPos.x;
 			invertedLocalPos.y = localPos.y;
+			*/
 			var vertices = new[]
 			{
 				localPos,

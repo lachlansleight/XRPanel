@@ -8,7 +8,7 @@ namespace XRP
 	public class XrpControlGeometry : MonoBehaviour
 	{
 
-		private Transform _main;
+		protected Transform _main;
 		private Transform _right;
 		private Transform _left;
 		private Transform _top;
@@ -20,7 +20,7 @@ namespace XRP
 			FixGeometry();
 		}
 
-		private void FetchGeometry()
+		protected virtual void FetchGeometry()
 		{
 			_main = transform.Find("Main");
 			_right = transform.Find("Right");
