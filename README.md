@@ -8,10 +8,13 @@ XRPanel is designed to be a volumetric, spatial UI for VR and AR devices. It's b
 
 **1. Completely device agnostic - no code anywhere tying it to any particular SDK, device, use-case or assumption in any way**    
 The XRPointer is the only component that isn't part of an XRPanel hierarchy. Within reason, you can have as many of these in the scene as you like (including zero) and the script only queries the position of the Transform it's attached to.
+
 **2. Touch-only - no requirements for any discrete input like button pressing or gesture recognition, and also no Raycasting!**    
 This has been done by using depth as a discrete input analog. By pressing 'into' a control's bounding rectangle, that control is activated, and so long as the XRPointer doesn't pass back through the control's local XY plane, the control will stay activated.
+
 **3. Physical - should be based on real-world controls like sliders, knobs, buttons and toggles**    
 This is to aid intuition, and to keep things broadly consistent with the Unity 4.6 UI paradigms.
+
 **4. UnityEvent + Delegate Invocations**    
 This allows the system to be used by programmers by hooking into `OnStateChanged` and `OnValueChanged` delegates, or by designers through the familiar UnityEvent inspector
   
